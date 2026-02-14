@@ -32,4 +32,26 @@
  */
 export function getSeasonActivity(month, temperature) {
   // Your code here
+  if (month <= 0 || month >= 13)
+    return null;
+
+  if (month === 12)
+    month = 0;
+
+  let season, activity;
+  if (month < 3) {
+    season = "Winter";
+    activity = (temperature < 0) ? "skiing" : "ice skating";
+  } else if (month < 6) {
+    season = "Spring";
+    activity = (temperature > 20) ? "hiking" : "museum visit";
+  } else if (month < 9) {
+    season = "Summer";
+    activity = (temperature > 35) ? "swimming" : "cycling";
+  } else if (month < 12) {
+    season = "Autumn";
+    activity = (temperature > 15) ? "nature walk" : "reading at a cafe";
+  }
+
+  return {season, activity};
 }
